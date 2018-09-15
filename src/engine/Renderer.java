@@ -14,7 +14,7 @@ public class Renderer {
     private int[] zb;
     private int[] lm;
     private int[] lb;
-    private int ambientColor = 0xff343434;
+    private int ambientColor = 0xffaaaaaa;
 
     private int zDepth = 0;
     private ArrayList<ImageRequest> imageRequests = new ArrayList<>();
@@ -94,7 +94,7 @@ public class Renderer {
         if (alpha == 255) {
             p[index] = value;
         } else {
-            int pixelColor = p[x + y * pW];
+            int pixelColor = p[index];
             int newRed = ((pixelColor >> 16) & 0xff) - (int) ((((pixelColor >> 16) & 0xff) - ((value >> 16) & 0xff)) * (alpha / 255f));
             int newGreen = ((pixelColor >> 8) & 0xff) - (int) ((((pixelColor >> 8) & 0xff) - ((value >> 8) & 0xff)) * (alpha / 255f));
             int newBlue = (pixelColor & 0xff) - (int) (((pixelColor & 0xff) - (value & 0xff)) * (alpha / 255f));
